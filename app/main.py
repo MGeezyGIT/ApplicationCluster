@@ -4,8 +4,7 @@ import json
 import logging
 from dotenv import load_dotenv
 from fastapi import FastAPI
-from app.routes import process_json_router, get_matrix_router, scrape_content_router, save_data_router
-
+from app.routes import process_json_router, get_matrix_router, scrape_content_router, save_data_router, get_saved_data_router
 # Load environment variables from .env file
 load_dotenv()
 
@@ -30,6 +29,7 @@ app.include_router(process_json_router)
 app.include_router(get_matrix_router)
 app.include_router(scrape_content_router)
 app.include_router(save_data_router)
+app.include_router(get_saved_data_router)
 
 # Configure logging
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
