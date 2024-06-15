@@ -1,9 +1,14 @@
+# main.py
 import os
+import logging
 from dotenv import load_dotenv
 from fastapi import FastAPI
 from app.routes import process_json_router, get_matrix_router, scrape_content_router, save_data_router
 
 load_dotenv()  # Load environment variables from .env file
+
+# Configure logging
+logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
 app = FastAPI()
 
@@ -15,6 +20,3 @@ app.include_router(save_data_router)
 @app.get("/")
 async def root():
     return {"message": "Welcome to the FastAPI Content Generator"}
-
-# Configure logging
-logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
