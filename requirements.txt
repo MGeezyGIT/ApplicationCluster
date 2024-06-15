@@ -4,3 +4,4 @@ pydantic
 beautifulsoup4
 tldextract
 requests
+python-dotenv

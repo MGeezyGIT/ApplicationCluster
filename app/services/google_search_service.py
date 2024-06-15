@@ -1,10 +1,12 @@
+# google_search_service.py
+import os
 import requests
 import logging
 
-API_KEY = "AIzaSyARC0r-jn3Or8rPn8fAfM2nMlV2NX4HnTk"
-SEARCH_ENGINE_ID = "80349abeec937438f"  # Corrected
+API_KEY = os.getenv("GOOGLE_API_KEY")
+SEARCH_ENGINE_ID = os.getenv("GOOGLE_SEARCH_ENGINE_ID")
 
-def perform_google_search(query, num_results=3):
+def perform_google_search(query, num_results=5):
     try:
         logging.debug(f"Sending Google search request for query: {query}")
         url = f"https://www.googleapis.com/customsearch/v1?q={query}&key={API_KEY}&cx={SEARCH_ENGINE_ID}&num={num_results}"
